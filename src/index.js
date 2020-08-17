@@ -14,6 +14,11 @@ const refs = {
   list: document.getElementById('js-list'),
 }
 
+const addItemsHtml = (item) => {
+  refs.list.innerHTML = '';
+  refs.list.insertAdjacentHTML('afterbegin',item);
+}
+
 const drawList = data => {
   const dataLength = data.length;
   if(data.length > 10){
@@ -28,14 +33,12 @@ const drawList = data => {
     });
   }
   else if(data.length >= 2 && dataLength <= 10){
-    refs.list.innerHTML = '';
     const item = liTemplateByName(data);
-    refs.list.insertAdjacentHTML('afterbegin',item);
+    addItemsHtml(item);
   }
   else if(data.length === 1){
-    refs.list.innerHTML = '';
     const item = liTemplateByItem(data);
-    refs.list.insertAdjacentHTML('afterbegin',item);
+    addItemsHtml(item);
   }
 }
 
